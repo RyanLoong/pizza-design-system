@@ -53,6 +53,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.22</version>
 		</dependency>
+		<!-- 该连接在springboot中如果没有手动设置其他连接池一般会默认使用其，这里显示设置 -->
 		<!-- https://mvnrepository.com/artifact/hikari-cp/hikari-cp -->
 		<dependency>
 			<groupId>hikari-cp</groupId>
@@ -72,6 +73,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- @ConfigurationProperties注解依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 

@@ -21,3 +21,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true #打印执行的sql语句
+# 配置查询订单时一页的数量
+taco:
+  orders:
+    pageSize: 10
