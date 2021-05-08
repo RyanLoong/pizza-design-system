@@ -1,0 +1,35 @@
+package tacos.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import tacos.repository.UserRepository;
+import tacos.entity.User;
+
+/**
+ * @author RyanLoong
+ * @Date 2021/5/7 21:02
+ * @Classname UserRepositoryUserDetailsService
+ * @Description 通过持久层获取到UserDetails对象
+ */
+@Service
+public class UserRepositoryUserDetailsService implements UserDetailsService {
+
+    private UserRepository userRepo;
+
+    @Autowired
+    public UserRepositoryUserDetailsService(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepo.findByUsername(username);
+        if (user != null) {
+           return user;
+        }
+        throw new UsernameNotFoundException("User '" + username + "' not found");
+    }
+}
